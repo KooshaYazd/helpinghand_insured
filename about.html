@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Custom styles just for this page -->
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display&display=swap');
+
+    .about-container {
+        font-family: 'Montserrat', sans-serif;
+        margin-top: 60px;
+        line-height: 1.8;
+    }
+
+    .about-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        text-align: center;
+        color: #1e5631;
+        /* Green from logo */
+    }
+
+    .lead {
+        font-size: 1.2rem;
+        color: #3f3f3f;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 2rem auto;
+    }
+
+    .about-section {
+        background-color: #fdf8f2;
+        /* Light cream */
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .about-section h4 {
+        font-weight: 600;
+        color: #1e5631;
+        /* Green header */
+        margin-bottom: 1rem;
+    }
+
+    .about-paragraph {
+        color: #333;
+        font-size: 1rem;
+    }
+</style>
+
+<div class="container about-container">
+    <h1 class="about-title">About Helping Hand Insured</h1>
+    <p class="lead">
+        Helping Hand Insured was built on a simple promise: provide peace of mind through protection that actually makes
+        sense.
+    </p>
+
+    <div class="about-section text-center">
+        <h4>Our Mission</h4>
+        <p class="about-paragraph">
+            We proudly offer a dual approach to insurance — serving both individuals and businesses with plans tailored
+            to their world. Whether you're managing day-to-day life or navigating large-scale operations, we’ve got you
+            covered.
+        </p>
+    </div>
+
+    <div class="about-section text-center">
+        <h4>For Individuals</h4>
+        <p class="about-paragraph">
+            Our auto and medical insurance plans are designed to keep you moving and healthy. With affordable, flexible
+            coverage and a team that cares, we make it easy to get protection without the confusion or fine print.
+        </p>
+    </div>
+
+    <div class="about-section text-center">
+        <h4>For Marine Industry Professionals</h4>
+        <p class="about-paragraph">
+            Our MFO (Marine Fuel Oil) vessel insurance is built for shipping operators, logistics companies, and
+            commercial clients operating on international waters. We understand the unique risks and demands of maritime
+            operations — and we’re equipped to protect your fleet, your crew, and your cargo.
+        </p>
+    </div>
+
+    <div class="about-section text-center">
+        <h4>More Than a Provider</h4>
+        <p class="about-paragraph">
+            Helping Hand Insured is more than a provider — we're a partner. Our goal is to earn your trust, simplify
+            your protection, and be there when it matters most.
+        </p>
+    </div>
+</div>
+{% endblock %}

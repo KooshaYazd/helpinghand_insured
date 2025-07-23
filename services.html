@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .service-section h2 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        border-left: 5px solid #1e5631;
+        /* green border */
+        padding-left: 15px;
+        color: #1e5631;
+    }
+
+    .plan-card {
+        background-color: #fdf8f2;
+        /* light cream */
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease;
+        height: 100%;
+    }
+
+    .plan-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .plan-card h4 {
+        color: #1e5631;
+        font-weight: 600;
+    }
+
+    .plan-card ul {
+        padding-left: 20px;
+    }
+
+    .plan-card small {
+        display: block;
+        margin-top: 15px;
+        font-weight: 500;
+        color: #333;
+    }
+</style>
+
+<div class="container mt-5 mb-5">
+    <h1 class="mb-4 text-center" style="color: #1e5631;">Our Services</h1>
+    <p class="lead text-center">Explore flexible, reliable coverage tailored to fit your needs and budget.</p>
+
+    <hr class="mb-5">
+
+    <!-- Auto Insurance -->
+    <div class="service-section">
+        <h2>Auto Insurance</h2>
+        <div class="row">
+            {% for plan in [
+            {"title": "Base Plan - $40/month", "desc": "Essential coverage including liability and collision.",
+            "features": ["State-minimum liability", "Basic collision repair", "24/7 claims support"], "ideal":
+            "Budget-conscious drivers or second vehicles."},
+            {"title": "Classic Plan - $70/month", "desc": "Expanded protection for everyday drivers.", "features":
+            ["Full liability & collision", "Comprehensive coverage (fire, theft, flood)", "Roadside assistance"],
+            "ideal": "Daily commuters and family vehicles."},
+            {"title": "Premium Plan - $110/month", "desc": "Complete protection with luxury and perks.", "features":
+            ["Full coverage + rental car reimbursement", "Glass replacement, accident forgiveness", "Priority claims and
+            support"], "ideal":
+            "New/luxury vehicles and peace of mind."}
+            ] %}
+            <div class="col-md-4 d-flex mb-4">
+                <div class="plan-card w-100">
+                    <h4>{{ plan.title }}</h4>
+                    <p>{{ plan.desc }}</p>
+                    <ul>
+                        {% for item in plan.features %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                    <small><strong>Ideal for:</strong> {{ plan.ideal }}</small>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Medical Insurance -->
+    <div class="service-section mt-5">
+        <h2>Medical Insurance</h2>
+        <div class="row">
+            {% for plan in [
+            {"title": "Base Plan - $80/month", "desc": "Affordable coverage for minor medical needs.", "features":
+            ["Basic checkups & urgent care", "Generic prescriptions", "Virtual doctor access"], "ideal": "Students or
+            healthy individuals with low needs."},
+            {"title": "Classic Plan - $150/month", "desc": "Well-rounded care for most individuals or couples.",
+            "features": ["Primary & specialist visits", "Lab tests, prescriptions", "Preventive screenings"], "ideal":
+            "Individuals, couples, and small families."},
+            {"title": "Premium Plan - $240/month", "desc": "Full coverage including advanced and emergency care.",
+            "features": ["Hospital stays & emergency coverage", "Mental health & maternity care", "Private doctor
+            access"], "ideal":
+            "Families or anyone with ongoing medical needs."}
+            ] %}
+            <div class="col-md-4 d-flex mb-4">
+                <div class="plan-card w-100">
+                    <h4>{{ plan.title }}</h4>
+                    <p>{{ plan.desc }}</p>
+                    <ul>
+                        {% for item in plan.features %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                    <small><strong>Ideal for:</strong> {{ plan.ideal }}</small>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- MFO Vessel Insurance -->
+    <div class="service-section mt-5">
+        <h2>MFO Vessel Insurance</h2>
+        <div class="row">
+            {% for plan in [
+            {"title": "Base Plan - $350/month", "desc": "Entry-level protection for general liability and port risk.",
+            "features": ["Hull & machinery coverage (basic)", "Third-party liability", "Port-only coverage"], "ideal":
+            "Small coastal tankers operating within limited zones."},
+            {"title": "Classic Plan - $600/month", "desc": "Broader coverage for mid-sized regional vessels.",
+            "features": ["Comprehensive hull & machinery", "Cargo and pollution coverage", "Crew injury coverage"],
+            "ideal": "Pana-max and Suez-max tankers with regular trade routes."},
+            {"title": "Premium Plan - $900/month", "desc": "Extensive global protection with risk mitigation support.",
+            "features": ["Full worldwide coverage", "Piracy & war risk inclusion", "Legal and salvage support"],
+            "ideal": "VLCC and ULCC vessels on international voyages."}
+            ] %}
+            <div class="col-md-4 d-flex mb-4">
+                <div class="plan-card w-100">
+                    <h4>{{ plan.title }}</h4>
+                    <p>{{ plan.desc }}</p>
+                    <ul>
+                        {% for item in plan.features %}
+                        <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                    <small><strong>Ideal for:</strong> {{ plan.ideal }}</small>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

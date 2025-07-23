@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .registration-container {
+        background-color: #fdf8f2;
+        /* light cream */
+        padding: 3rem 2rem;
+        border-radius: 12px;
+        margin-top: 50px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    }
+
+    .registration-container h1 {
+        font-weight: 600;
+        color: #1e5631;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .form-label {
+        font-weight: 500;
+        color: #1e5631;
+    }
+
+    .form-select:focus,
+    .form-control:focus {
+        border-color: #1e5631;
+        box-shadow: 0 0 0 0.2rem rgba(30, 86, 49, 0.25);
+    }
+
+    .btn-submit {
+        background-color: #1e5631;
+        color: #fff;
+        font-weight: 600;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        transition: background-color 0.2s ease;
+    }
+
+    .btn-submit:hover {
+        background-color: #154c28;
+    }
+</style>
+
+<div class="container registration-container">
+    <h1 class="mb-4">Request for Insurance Registration</h1>
+
+    <form method="POST" action="/registration">
+        <!-- Name -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+
+        <!-- Age Range -->
+        <div class="mb-3">
+            <label class="form-label">Age Range</label>
+            <select class="form-select" name="age_range" required>
+                <option disabled selected>Select age range</option>
+                <option>18–24</option>
+                <option>25–34</option>
+                <option>35–44</option>
+                <option>45–54</option>
+                <option>55–64</option>
+                <option>65+</option>
+            </select>
+        </div>
+
+        <!-- Passport Issuing Country -->
+        <div class="mb-3">
+            <label class="form-label">Passport Issuing Country</label>
+            <select class="form-select" name="passport_country" id="passportCountry" onchange="toggleOtherPassport()"
+                required>
+                <option disabled selected>Select passport issuance</option>
+                <option>United Arab Emirates</option>
+                <option>United States of America</option>
+                <option>Bangladesh</option>
+                <option>China</option>
+                <option>Egypt</option>
+                <option>European Union</option>
+                <option>India</option>
+                <option>Iran</option>
+                <option>Pakistan</option>
+                <option>Philippines</option>
+                <option>Russia</option>
+                <option>Saudi Arabia</option>
+                <option>United Kingdom</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <!-- Other Passport Field -->
+        <div class="mb-3" id="otherPassportField" style="display: none;">
+            <label class="form-label">Please specify your passport's country</label>
+            <input type="text" class="form-control" name="other_passport_country" placeholder="Enter country">
+        </div>
+
+        <!-- Insurance Type -->
+        <div class="mb-3">
+            <label class="form-label">Select Insurance Type</label>
+            <select class="form-select" name="insurance_type" id="insuranceType" onchange="showRelevantFields()"
+                required>
+                <option disabled selected>Choose an option</option>
+                <option value="auto">Auto</option>
+                <option value="medical">Medical</option>
+                <option value="mfo vessel">MFO Vessel</option>
+            </select>
+        </div>
+
+        <!-- Auto Fields -->
+        <div id="autoFields" class="mb-3" style="display: none;">
+            <label class="form-label">Car Year Range</label>
+            <select class="form-select" name="car_year_range">
+                <option disabled selected>Select car year range</option>
+                <option>2021–2025</option>
+                <option>2015–2020</option>
+                <option>2010–2014</option>
+                <option>2000–2009</option>
+                <option>1990–1999</option>
+                <option>1965–1989</option>
+                <option>1964 or older</option>
+            </select>
+        </div>
+
+        <!-- Medical Fields -->
+        <div id="medicalFields" class="mb-3" style="display: none;">
+            <label class="form-label">Medical Coverage Type</label>
+            <select class="form-select" name="medical_type">
+                <option disabled selected>Select type</option>
+                <option>Solo</option>
+                <option>Couple</option>
+                <option>Family</option>
+            </select>
+        </div>
+
+        <!-- MFO Fields -->
+        <div id="mfoFields" style="display: none;">
+            <div class="mb-3">
+                <label class="form-label">Vessel Type</label>
+                <select class="form-select" name="vessel_type">
+                    <option disabled selected>Select vessel type</option>
+                    <option>Coastal Tanker</option>
+                    <option>Pana-max</option>
+                    <option>Suez-max</option>
+                    <option>VLCC</option>
+                    <option>ULCC</option>
+                </select>
+            </div>
+            <div class="mb-3" id="mfoCompanyField">
+                <label class="form-label">Company Name</label>
+                <input type="text" class="form-control" name="mfo_company_name" placeholder="Enter your company name">
+            </div>
+        </div>
+
+        <!-- Insurance Bundle -->
+        <div class="mb-3">
+            <label class="form-label">Choose Your Bundle</label>
+            <select class="form-select" name="bundle" required>
+                <option disabled selected>Select a bundle</option>
+                <option>Base</option>
+                <option>Classic</option>
+                <option>Premium</option>
+            </select>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-submit">Submit Registration</button>
+    </form>
+</div>
+
+<script>
+    function showRelevantFields() {
+        const insuranceType = document.getElementById("insuranceType").value;
+        document.getElementById("autoFields").style.display = (insuranceType === "auto") ? "block" : "none";
+        document.getElementById("medicalFields").style.display = (insuranceType === "medical") ? "block" : "none";
+        const isMFO = insuranceType === "mfo vessel";
+        document.getElementById("mfoFields").style.display = isMFO ? "block" : "none";
+        document.getElementById("mfoCompanyField").style.display = isMFO ? "block" : "none";
+    }
+
+    function toggleOtherPassport() {
+        const select = document.getElementById("passportCountry");
+        const other = document.getElementById("otherPassportField");
+        other.style.display = (select.value === "Other") ? "block" : "none";
+    }
+</script>
+{% endblock %}

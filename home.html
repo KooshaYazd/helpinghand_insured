@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .hero-banner {
+        background-image: url("{{ url_for('static', filename='images/men-in-a-coverall-suit-looking-ahead-at-a-ship-dockyard-2.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        position: relative;
+        height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .hero-overlay h1,
+    .hero-overlay p {
+        color: white;
+        margin-bottom: 1rem;
+    }
+
+    .text-card {
+        background-color: #f5f1e6;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease;
+        height: 100%;
+    }
+
+    .text-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .text-card h3 {
+        color: #1e5631;
+        font-weight: 600;
+    }
+
+    .news-rotator {
+        background-color: #f8f9fa;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: relative;
+        min-height: 400px;
+    }
+
+    .news-slide {
+        display: none;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .news-slide.active {
+        display: block;
+    }
+
+    .news-slide img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .btn-green {
+        background-color: #1e5631;
+        color: white;
+        border: none;
+    }
+
+    .btn-green:hover {
+        background-color: #154c28;
+        color: white;
+    }
+
+    .footer {
+        margin-top: 60px;
+        padding: 30px 0;
+        background-color: #f5f1e6;
+        color: #333;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+    .footer a {
+        color: #1e5631;
+        text-decoration: none;
+    }
+
+    .footer a:hover {
+        text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<!-- Hero Banner -->
+<div class="p-5 mb-4 hero-banner text-center">
+    <div class="hero-overlay">
+        <h1 class="display-4">Welcome to Helping Hand Insured</h1>
+        <p class="lead">Reliable coverage for what matters most — health, mobility, and maritime operations.</p>
+        <a href="/registration" class="btn btn-green btn-lg mt-3">Get Registered</a>
+    </div>
+</div>
+
+<!-- Insurance Types -->
+<div class="row mt-5 align-items-stretch">
+    <div class="col-md-4 d-flex">
+        <div class="text-card w-100">
+            <h3>Medical Insurance</h3>
+            <p>Comprehensive health coverage designed to protect you and your family from life’s unexpected turns.</p>
+        </div>
+    </div>
+    <div class="col-md-4 d-flex">
+        <div class="text-card w-100">
+            <h3>Auto Insurance</h3>
+            <p>Affordable, customizable plans that keep you covered — whether you're commuting, cruising, or carpooling.
+            </p>
+        </div>
+    </div>
+    <div class="col-md-4 d-flex">
+        <div class="text-card w-100">
+            <h3>MFO Vessel Insurance</h3>
+            <p>Specialized insurance for marine fuel oil (MFO) vessels — built for operators, owners, and global
+                logistics teams.</p>
+        </div>
+    </div>
+</div>
+
+<!-- News Rotator -->
+<hr class="my-5">
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Latest Headlines</h3>
+    <div class="news-rotator" id="newsRotator">
+        {% for article in articles %}
+        <div class="news-slide {% if loop.first %}active{% endif %}">
+            {% if article.urlToImage %}
+            <img src="{{ article.urlToImage }}" alt="News Image">
+            {% endif %}
+            <h5>{{ article.title }}</h5>
+            <p>{{ article.description }}</p>
+            <a href="{{ article.url }}" target="_blank" class="btn btn-sm btn-green">Read more</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    const slides = document.querySelectorAll(".news-slide");
+    let current = 0;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle("active", i === index);
+        });
+    }
+
+    setInterval(() => {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+    }, 10000);
+</script>
+
+<!-- Footer -->
+<div class="footer">
+    <div>
+        {{ now }} Helping Hand Insured • Dubai Business Bay<br>
+        <a href="https://www.linkedin.com/in/helping-hand-insured-27a90a375" target="_blank">Visit us on LinkedIn</a>
+    </div>
+</div>
+
+{% endblock %}
