@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Helping Hand Insured</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body { background-color: #fdf8f2; color: #333; }
+    .navbar-custom { background-color: #1e5631; padding: 0.75rem 1.5rem; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); }
+    .navbar-brand { font-weight: 600; font-size: 1.4rem; color: #ffffff !important; display: flex; align-items: center; }
+    .navbar-brand img { height: 40px; margin-right: 10px; }
+    .nav-link { color: #ffffff !important; font-weight: 500; border-radius: 0.35rem; padding: 6px 12px; transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; }
+    .nav-link:hover, .nav-link.active { background-color: #fdf8f2; color: #1e5631 !important; }
+    .nav-register { background-color: #fdf8f2; color: #1e5631 !important; font-weight: 600; border-radius: 0.35rem; }
+    .nav-register:hover, .nav-register.active { background-color: #d4d2c5; color: #1e5631 !important; }
+    .alert { border-radius: 0.35rem; }
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-custom">
+<div class="container-fluid">
+<a class="navbar-brand" href="index.html">
+<img alt="Helping Hand Logo" src="static/images/logo.png"/>
+            Helping Hand Insured
+        </a>
+<button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon" style="filter: invert(100%)"></span>
+</button>
+<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+<ul class="navbar-nav">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+<li class="nav-item"><a class="nav-link nav-register active" href="registration.html">Register</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="container mt-4"></div>
+<div class="container" id="page-content">
+
+<style>
+    .registration-container { background-color: #fdf8f2; padding: 3rem 2rem; border-radius: 12px; margin-top: 50px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05); }
+    .registration-container h1 { font-weight: 600; color: #1e5631; margin-bottom: 1.5rem; text-align: center; }
+    .form-label { font-weight: 500; color: #1e5631; }
+    .form-select:focus, .form-control:focus { border-color: #1e5631; box-shadow: 0 0 0 0.2rem rgba(30, 86, 49, 0.25); }
+    .btn-submit { background-color: #1e5631; color: #fff; font-weight: 600; border: none; padding: 10px 20px; border-radius: 6px; transition: background-color 0.2s ease; }
+    .btn-submit:hover { background-color: #154c28; }
+</style>
+<div class="container registration-container">
+<h1 class="mb-4">Request for Insurance Registration</h1>
+<!-- Form action updated to your specific Formspree URL for registration -->
+<form action="https://formspree.io/f/xpwlqkap" method="POST">
+    <!-- Hidden field to specify the recipient email and subject -->
+    <input type="hidden" name="_replyto" value="helpinghandinsured@gmail.com">
+    <input type="hidden" name="_subject" value="New Insurance Registration Request">
+
+<div class="mb-3"><label class="form-label" for="name">Full Name</label><input class="form-control" id="name" name="name" placeholder="John Doe" required="" type="text"/></div>
+<div class="mb-3"><label class="form-label" for="email">Email Address</label><input class="form-control" id="email" name="email" placeholder="you@example.com" required="" type="email"/></div>
+<div class="mb-3"><label class="form-label">Age Range</label><select class="form-select" name="age_range" required=""><option disabled="" selected="">Select age range</option><option>18–24</option><option>25–34</option><option>35–44</option><option>45–54</option><option>55–64</option><option>65+</option></select></div>
+<div class="mb-3"><label class="form-label">Passport Issuing Country</label><select class="form-select" id="passportCountry" name="passport_country" onchange="toggleOtherPassport()" required=""><option disabled="" selected="">Select passport issuance</option><option>United Arab Emirates</option><option>United States of America</option><option>Bangladesh</option><option>China</option><option>Egypt</option><option>European Union</option><option>India</option><option>Iran</option><option>Pakistan</option><option>Philippines</option><option>Russia</option><option>Saudi Arabia</option><option>United Kingdom</option><option value="Other">Other</option></select></div>
+<div class="mb-3" id="otherPassportField" style="display: none;"><label class="form-label">Please specify your passport's country</label><input class="form-control" name="other_passport_country" placeholder="Enter country" type="text"/></div>
+<div class="mb-3"><label class="form-label">Select Insurance Type</label><select class="form-select" id="insuranceType" name="insurance_type" onchange="showRelevantFields()" required=""><option disabled="" selected="">Choose an option</option><option value="auto">Auto</option><option value="medical">Medical</option><option value="mfo vessel">MFO Vessel</option></select></div>
+<div class="mb-3" id="autoFields" style="display: none;"><label class="form-label">Car Year Range</label><select class="form-select" name="car_year_range"><option disabled="" selected="">Select car year range</option><option>2021–2025</option><option>2015–2020</option><option>2010–2014</option><option>2000–2009</option><option>1990–1999</option><option>1965–1989</option><option>1964 or older</option></select></div>
+<div class="mb-3" id="medicalFields" style="display: none;"><label class="form-label">Medical Coverage Type</label><select class="form-select" name="medical_type"><option disabled="" selected="">Select type</option><option>Solo</option><option>Couple</option><option>Family</option></select></div>
+<div id="mfoFields" style="display: none;"><div class="mb-3"><label class="form-label">Vessel Type</label><select class="form-select" name="vessel_type"><option disabled="" selected="">Select vessel type</option><option>Coastal Tanker</option><option>Pana-max</option><option>Suez-max</option><option>VLCC</option><option>ULCC</option></select></div><div class="mb-3" id="mfoCompanyField"><label class="form-label">Company Name</label><input class="form-control" name="mfo_company_name" placeholder="Enter your company name" type="text"/></div></div>
+<div class="mb-3"><label class="form-label">Choose Your Bundle</label><select class="form-select" name="bundle" required=""><option disabled="" selected="">Select a bundle</option><option>Base</option><option>Classic</option><option>Premium</option></select></div>
+<button class="btn btn-submit" type="submit">Submit Registration</button>
+</form>
+</div>
+<script>
+    function showRelevantFields() {
+        const insuranceType = document.getElementById("insuranceType").value;
+        document.getElementById("autoFields").style.display = (insuranceType === "auto") ? "block" : "none";
+        document.getElementById("medicalFields").style.display = (insuranceType === "medical") ? "block" : "none";
+        const isMFO = insuranceType === "mfo vessel";
+        document.getElementById("mfoFields").style.display = isMFO ? "block" : "none";
+        document.getElementById("mfoCompanyField").style.display = isMFO ? "block" : "none";
+    }
+    function toggleOtherPassport() {
+        const select = document.getElementById("passportCountry");
+        const other = document.getElementById("otherPassportField");
+        other.style.display = (select.value === "Other") ? "block" : "none";
+    }
+</script>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

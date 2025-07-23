@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Helping Hand Insured</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    body { background-color: #fdf8f2; color: #333; }
+    .navbar-custom { background-color: #1e5631; padding: 0.75rem 1.5rem; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); }
+    .navbar-brand { font-weight: 600; font-size: 1.4rem; color: #ffffff !important; display: flex; align-items: center; }
+    .navbar-brand img { height: 40px; margin-right: 10px; }
+    .nav-link { color: #ffffff !important; font-weight: 500; border-radius: 0.35rem; padding: 6px 12px; transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; }
+    /* General nav-link hover and active state */
+    .nav-link:hover, .nav-link.active { background-color: #fdf8f2; color: #1e5631 !important; }
+
+    /* Modified .nav-register styles */
+    /* Base .nav-register now inherits default .nav-link colors (white text, no background) */
+    .nav-register {
+        font-weight: 600; /* Keep bold font */
+        border-radius: 0.35rem; /* Keep rounded corners */
+        /* Removed background-color and color from here so it doesn't look "selected" by default */
+    }
+    /* Apply the distinct button style ONLY when .nav-register is the active link */
+    .nav-register.active {
+        background-color: #fdf8f2; /* Light cream background for active register button */
+        color: #1e5631 !important; /* Green text for active register button */
+    }
+    /* Apply a slightly different background on hover for the register button */
+    .nav-register:hover {
+        background-color: #d4d2c5; /* Darker cream on hover for register button */
+        color: #1e5631 !important; /* Green text on hover for register button */
+    }
+    .alert { border-radius: 0.35rem; }
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-custom">
+<div class="container-fluid">
+<a class="navbar-brand" href="index.html">
+<img alt="Helping Hand Logo" src="static/images/logo.png"/>
+            Helping Hand Insured
+        </a>
+<button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon" style="filter: invert(100%)"></span>
+</button>
+<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+<ul class="navbar-nav">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+<!-- No 'active' class here, and its visual style is now controlled by the new CSS rules -->
+<li class="nav-item"><a class="nav-link nav-register" href="registration.html">Register</a></li>
+<li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="container mt-4"></div>
+<div class="container" id="page-content">
+<style>
+    .contact-container {
+        background-color: #fdf8f2;
+        padding: 3rem 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        margin-top: 60px;
+    }
+    .contact-container h1 {
+        font-weight: 600;
+        color: #1e5631;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    .contact-container .lead {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    .form-label {
+        font-weight: 500;
+        color: #1e5631;
+    }
+    .form-control:focus {
+        border-color: #1e5631;
+        box-shadow: 0 0 0 0.2rem rgba(30, 86, 49, 0.25);
+    }
+    .btn-submit {
+        background-color: #1e5631;
+        color: #fff;
+        font-weight: 600;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        transition: background-color 0.2s ease;
+    }
+    .btn-submit:hover {
+        background-color: #154c28;
+    }
+</style>
+<div class="container contact-container">
+<h1>Contact Us</h1>
+<p class="lead">Have a question or need a quote? Send us a message and we'll get back to you soon.</p>
+<!-- Form action updated to your specific Formspree URL for contact -->
+<form action="https://formspree.io/f/mjkogjbj" method="POST">
+    <!-- Hidden field to specify the recipient email and subject -->
+    <input type="hidden" name="_replyto" value="helpinghandinsured@gmail.com">
+    <input type="hidden" name="_subject" value="New Contact Form Submission">
+
+<div class="mb-3">
+<label class="form-label" for="name">Full Name</label>
+<input class="form-control" id="name" name="name" placeholder="John Doe" required="" type="text"/>
+</div>
+<div class="mb-3">
+<label class="form-label" for="email">Email Address</label>
+<input class="form-control" id="email" name="email" placeholder="you@example.com" required="" type="email"/>
+</div>
+<div class="mb-3">
+<label class="form-label" for="subject">Subject</label>
+<input class="form-control" id="subject" name="subject" placeholder="Auto Insurance Inquiry" required="" type="text"/>
+</div>
+<div class="mb-3">
+<label class="form-label" for="message">Message</label>
+<textarea class="form-control" id="message" name="message" placeholder="Write your message here..." required="" rows="5"></textarea>
+</div>
+<button class="btn btn-submit" type="submit">Send Message</button>
+</form>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

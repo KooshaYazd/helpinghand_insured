@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>About Helping Hand Insured</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        /* Styles copied from index.html for consistent navbar and body */
+        body { background-color: #fdf8f2; color: #333; }
+        .navbar-custom { background-color: #1e5631; padding: 0.75rem 1.5rem; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); }
+        .navbar-brand { font-weight: 600; font-size: 1.4rem; color: #ffffff !important; display: flex; align-items: center; }
+        .navbar-brand img { height: 40px; margin-right: 10px; }
+        .nav-link { color: #ffffff !important; font-weight: 500; border-radius: 0.35rem; padding: 6px 12px; transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; }
+        .nav-link:hover, .nav-link.active { background-color: #fdf8f2; color: #1e5631 !important; }
+        .nav-register { font-weight: 600; border-radius: 0.35rem; }
+        .nav-register:hover, .nav-register.active { background-color: #fdf8f2; color: #1e5631 !important; }
+        .alert { border-radius: 0.35rem; }
+
+        /* Custom styles just for this page (from your provided content) */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display&display=swap');
+
+        .about-container {
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 60px;
+            line-height: 1.8;
+        }
+
+        .about-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #1e5631; /* Green from logo */
+        }
+
+        .lead {
+            font-size: 1.2rem;
+            color: #3f3f3f;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .about-section {
+            background-color: #fdf8f2; /* Light cream */
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .about-section h4 {
+            font-weight: 600;
+            color: #1e5631; /* Green header */
+            margin-bottom: 1rem;
+        }
+
+        .about-paragraph {
+            color: #333;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+            <img alt="Helping Hand Logo" src="static/images/logo.png"/>
+            Helping Hand Insured
+        </a>
+        <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon" style="filter: invert(100%)"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li> <!-- 'active' class added here -->
+                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link nav-register" href="registration.html">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4"></div>
+<div class="container" id="page-content">
+    <!-- Content from your provided Jinja2 block -->
+    <div class="container about-container">
+        <h1 class="about-title">About Helping Hand Insured</h1>
+        <p class="lead">
+            Helping Hand Insured was built on a simple promise: provide peace of mind through protection that actually makes
+            sense.
+        </p>
+
+        <div class="about-section text-center">
+            <h4>Our Mission</h4>
+            <p class="about-paragraph">
+                We proudly offer a dual approach to insurance — serving both individuals and businesses with plans tailored
+                to their world. Whether you're managing day-to-day life or navigating large-scale operations, we’ve got you
+                covered.
+            </p>
+        </div>
+
+        <div class="about-section text-center">
+            <h4>For Individuals</h4>
+            <p class="about-paragraph">
+                Our auto and medical insurance plans are designed to keep you moving and healthy. With affordable, flexible
+                coverage and a team that cares, we make it easy to get protection without the confusion or fine print.
+            </p>
+        </div>
+
+        <div class="about-section text-center">
+            <h4>For Marine Industry Professionals</h4>
+            <p class="about-paragraph">
+                Our MFO (Marine Fuel Oil) vessel insurance is built for shipping operators, logistics companies, and
+                commercial clients operating on international waters. We understand the unique risks and demands of maritime
+                operations — and we’re equipped to protect your fleet, your crew, and your cargo.
+            </p>
+        </div>
+
+        <div class="about-section text-center">
+            <h4>More Than a Provider</h4>
+            <p class="about-paragraph">
+                Helping Hand Insured is more than a provider — we're a partner. Our goal is to earn your trust, simplify
+                your protection, and be there when it matters most.
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer copied from index.html -->
+    <div class="footer">
+        <div>
+            2025 Helping Hand Insured • Dubai Business Bay<br/>
+            <a href="https://www.linkedin.com/in/helping-hand-insured-27a90a375" target="_blank">Visit us on LinkedIn</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

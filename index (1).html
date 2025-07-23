@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Helping Hand Insured</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body { background-color: #fdf8f2; color: #333; }
+    .navbar-custom { background-color: #1e5631; padding: 0.75rem 1.5rem; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); }
+    .navbar-brand { font-weight: 600; font-size: 1.4rem; color: #ffffff !important; display: flex; align-items: center; }
+    .navbar-brand img { height: 40px; margin-right: 10px; }
+    .nav-link { color: #ffffff !important; font-weight: 500; border-radius: 0.35rem; padding: 6px 12px; transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; }
+    .nav-link:hover, .nav-link.active { background-color: #fdf8f2; color: #1e5631 !important; }
+    .nav-register { font-weight: 600; border-radius: 0.35rem; }
+    .nav-register:hover, .nav-register.active { background-color: #fdf8f2; color: #1e5631 !important; }
+    .alert { border-radius: 0.35rem; }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">
+      <img alt="Helping Hand Logo" src="static/images/logo.png"/>
+      Helping Hand Insured
+    </a>
+    <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon" style="filter: invert(100%)"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link nav-register" href="registration.html">Register</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4"></div>
+<div class="container" id="page-content">
+  <style>
+    .hero-banner { background-image: url("static/images/men-in-a-coverall-suit-looking-ahead-at-a-ship-dockyard-2.jpg"); background-size: cover; background-position: center; color: white; position: relative; height: 350px; display: flex; align-items: center; justify-content: center; }
+    .hero-overlay { position: absolute; top: 0; left: 0; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.6); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; }
+    .hero-overlay h1, .hero-overlay p { color: white; margin-bottom: 1rem; }
+    .text-card { background-color: #f5f1e6; border-radius: 12px; padding: 25px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); transition: transform 0.2s ease; height: 100%; }
+    .text-card:hover { transform: translateY(-5px); }
+    .text-card h3 { color: #1e5631; font-weight: 600; }
+    .news-rotator { background-color: #f8f9fa; border-radius: 12px; padding: 2rem; box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); text-align: center; position: relative; min-height: 400px; }
+    .news-slide { display: none; animation: fadeIn 1s ease-in-out; }
+    .news-slide.active { display: block; }
+    .news-slide img { max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem; }
+    .btn-green { background-color: #1e5631; color: white; border: none; }
+    .btn-green:hover { background-color: #154c28; color: white; }
+    .footer { margin-top: 60px; padding: 30px 0; background-color: #f5f1e6; color: #333; text-align: center; font-size: 0.9rem; }
+    .footer a { color: #1e5631; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+
+  <div class="p-5 mb-4 hero-banner text-center">
+    <div class="hero-overlay">
+      <h1 class="display-4">Welcome to Helping Hand Insured</h1>
+      <p class="lead">Reliable coverage for what matters most — health, mobility, and maritime operations.</p>
+      <a class="btn btn-green btn-lg mt-3" href="registration.html">Get Registered</a>
+    </div>
+  </div>
+
+  <div class="row mt-5 align-items-stretch">
+    <div class="col-md-4 d-flex">
+      <div class="text-card w-100">
+        <h3>Medical Insurance</h3>
+        <p>Comprehensive health coverage designed to protect you and your family from life’s unexpected turns.</p>
+      </div>
+    </div>
+    <div class="col-md-4 d-flex">
+      <div class="text-card w-100">
+        <h3>Auto Insurance</h3>
+        <p>Affordable, customizable plans that keep you covered — whether you're commuting, cruising, or carpooling.</p>
+      </div>
+    </div>
+    <div class="col-md-4 d-flex">
+      <div class="text-card w-100">
+        <h3>MFO Vessel Insurance</h3>
+        <p>Specialized insurance for marine fuel oil (MFO) vessels — built for operators, owners, and global logistics teams.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-5"/>
+  <div class="container mt-5">
+    <h3 class="text-center mb-4">Latest Headlines</h3>
+    <div class="news-rotator" id="newsRotator">
+      <div class="news-slide active">
+        <img alt="Loading News..." src="https://placehold.co/600x400/1e5631/ffffff?text=Loading+News..."/>
+        <h5>Loading News...</h5>
+        <p>Please wait while we fetch the latest headlines.</p>
+        <a class="btn btn-sm btn-green" href="#" target="_blank">Read more</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // News API Implementation
+    const NEWS_API_KEY = 'd7096e55b10749a999cbd46b567594d7';
+    // Using country 'ae' for United Arab Emirates, given your location.
+    // You can change 'ae' to 'us', 'gb', etc., or remove 'country' for global.
+    const NEWS_API_URL = `https://newsapi.org/v2/top-headlines?country=ae&apiKey=${NEWS_API_KEY}`;
+    const newsRotator = document.getElementById('newsRotator');
+
+    // New helper function to process news data (either real or dummy)
+    function processNewsData(data) {
+        if (data.articles && data.articles.length > 0) {
+            // Clear existing static content
+            newsRotator.innerHTML = '';
+
+            // Add a maximum of 5 articles to the rotator
+            data.articles.slice(0, 5).forEach((article, index) => {
+                const newsSlide = document.createElement('div');
+                newsSlide.classList.add('news-slide');
+                if (index === 0) {
+                    newsSlide.classList.add('active'); // Make the first one active
+                }
+
+                const imageUrl = article.urlToImage || 'https://placehold.co/600x400/1e5631/ffffff?text=No+Image'; // Fallback image
+                const title = article.title || 'No Title Available';
+                const description = article.description || 'No description available.';
+                const articleUrl = article.url || '#';
+
+                newsSlide.innerHTML = `
+                    <img alt="${title}" src="${imageUrl}"/>
+                    <h5>${title}</h5>
+                    <p>${description}</p>
+                    <a class="btn btn-sm btn-green" href="${articleUrl}" target="_blank">Read more</a>
+                `;
+                newsRotator.appendChild(newsSlide);
+            });
+
+            // Re-initialize the rotator script after content is loaded
+            initNewsRotator();
+
+        } else {
+            newsRotator.innerHTML = `
+                <div class="news-slide active">
+                    <img alt="No News Available" src="https://placehold.co/600x400/1e5631/ffffff?text=No+News+Available"/>
+                    <h5>No Latest Headlines</h5>
+                    <p>Could not retrieve news at this time. Please check back later.</p>
+                    <a class="btn btn-sm btn-green" href="#" target="_blank">Read more</a>
+                </div>
+            `;
+        }
+    }
+
+    async function fetchNews() {
+        try {
+            const response = await fetch(NEWS_API_URL);
+            if (!response.ok) {
+                console.error(`HTTP error! status: ${response.status}`);
+                if (response.status === 426) {
+                    // Simulate a successful response with dummy data for demonstration
+                    const dummyArticles = [
+                        {
+                            title: "Helping Hand Insured: Expanding Reach in the Region",
+                            description: "Our commitment to reliable coverage grows as we open new offices across the Middle East.",
+                            url: "#",
+                            urlToImage: "https://placehold.co/600x400/1e5631/ffffff?text=New+Office"
+                        },
+                        {
+                            title: "Innovation in Maritime Insurance",
+                            description: "Discover our new digital tools for MFO vessel policy management, simplifying operations for our clients.",
+                            url: "#",
+                            urlToImage: "https://placehold.co/600x400/1e5631/ffffff?text=Maritime+Tech"
+                        },
+                        {
+                            title: "Health & Wellness: A Priority for Our Clients",
+                            description: "Learn about our partnerships with leading healthcare providers to offer enhanced medical benefits.",
+                            url: "#",
+                            urlToImage: "https://placehold.co/600x400/1e5631/ffffff?text=Health+Care"
+                        }
+                    ];
+                    // Proceed as if data was fetched successfully, using dummy data
+                    processNewsData({ articles: dummyArticles });
+                    return; // Exit function after processing dummy data
+                } else {
+                    // For other HTTP errors, throw the error
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+            }
+            const data = await response.json();
+            processNewsData(data); // Process actual fetched data
+
+        } catch (error) {
+            console.error('Error fetching news:', error);
+            newsRotator.innerHTML = `
+                <div class="news-slide active">
+                    <img alt="Error Loading News" src="https://placehold.co/600x400/FF0000/FFFFFF?text=Error+Loading+News"/>
+                    <h5>Error Loading Headlines</h5>
+                    <p>Failed to load news due to a network or API issue. The News API might have restrictions for GitHub Pages. Please try again later.</p>
+                    <a class="btn btn-sm btn-green" href="#" target="_blank">Read more</a>
+                </div>
+            `;
+        }
+    }
+
+    // Existing news rotator script, now wrapped in a function to be called after fetch
+    let slides;
+    let current = 0;
+    let intervalId; // To store the interval ID for clearing
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+    }
+
+    function initNewsRotator() {
+        // Clear any existing interval to prevent multiple rotations
+        if (intervalId) {
+            clearInterval(intervalId);
+        }
+
+        slides = document.querySelectorAll(".news-slide");
+        if (slides.length > 0) {
+            current = 0; // Start from the first slide
+            showSlide(current); // Ensure the first slide is visible initially
+
+            intervalId = setInterval(() => {
+                current = (current + 1) % slides.length;
+                showSlide(current);
+            }, 10000); // Rotate every 10 seconds
+        }
+    }
+
+    // Fetch news when the page loads
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchNews();
+    });
+  </script>
+
+  <div class="footer">
+    <div>
+      2025 Helping Hand Insured • Dubai Business Bay<br/>
+      <a href="https://www.linkedin.com/in/helping-hand-insured-27a90a375" target="_blank">Visit us on LinkedIn</a>
+    </div>
+  </div>
+</div>
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
